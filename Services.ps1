@@ -11,7 +11,6 @@ $fileContent | Out-File -FilePath "$home\desktop\Services.csv"
 
 timeout 5 | Out-Null
 $Data = Import-csv $home\desktop\Services.csv
-
 Foreach ($D in $Data)
 {
 $Service = $D.Servicename
