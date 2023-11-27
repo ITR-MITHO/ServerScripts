@@ -13,7 +13,6 @@ timeout 5 | Out-Null
 $Data = Import-csv $home\desktop\Services.csv
 
 Foreach ($D in $Data)
-
 {
 $Service = $D.Servicename
 $Startup = $D.Startup
