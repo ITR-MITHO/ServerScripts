@@ -25,5 +25,4 @@ $RAMowner = (Get-WmiObject -Query "SELECT * FROM Win32_Process WHERE ProcessId=$
 $TopRAMProcess =  $($_.ProcessName)
 $TopRAMUser = $($RAMowner.User)
 
-Echo "$Date, $Computername, $Processor, $TopCPUprocess, $TopCPUUser, $RoundMemory, $TopRAMProcess, $TopRamUser" | Out-File \\Server\Share\Performance.csv -Encoding unicode -Append
-}
+Echo "$Date, $Computername, $Processor, $TopCPUprocess, $TopCPUUser, $RoundMemory, $TopRAMProcess, $TopRamUser" | Out-File \\Server\Share\Performance.csv -Encoding unicode -Append}
