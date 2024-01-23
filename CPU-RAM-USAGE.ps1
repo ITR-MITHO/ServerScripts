@@ -16,7 +16,7 @@ $CPUProcesses = Get-Process | Sort-Object CPU -Descending | Select-Object -First
 $RAMProcesses = Get-Process | Sort-Object WorkingSet -Descending | Select-Object -First 3
 
 $CPUProcesses | ForEach-Object {
-$CPUowner = (Get-WmiObject -Query "SELECT * FROM Win32_Process WHERE ProcessId=$($_.Id)").GetOwner()
+$CPUOwner = (Get-WmiObject -Query "SELECT * FROM Win32_Process WHERE ProcessId=$($_.Id)").GetOwner()
 $TopCPUProcess =  $($_.ProcessName) 
 $TopCPUUser = $($CPUowner.User)
 
