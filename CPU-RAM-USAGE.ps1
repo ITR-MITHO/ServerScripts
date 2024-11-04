@@ -9,7 +9,7 @@ If ($Processor -GT 85)
 $CPUFile = Test-Path "\\domain.com\SHARE\CPU.csv"
 If (-Not $CPUFile)
 {
-Echo "Timestamp, Server, CPULoad, Process, User" | Out-File \\domain.com\SHARE\CPU.csv -Encoding unicode
+Echo "Timestamp, Server, CPULoad, Process, User"
 }
 
 $CPUProcesses = Get-Process | Sort-Object CPU -Descending | Select-Object -First 3
@@ -17,7 +17,7 @@ $CPUProcesses | ForEach-Object {
 $CPUOwner = (Get-WmiObject -Query "SELECT * FROM Win32_Process WHERE ProcessId=$($_.Id)").GetOwner()
 $TopCPUProcess =  $($_.ProcessName) 
 $TopCPUUser = $($CPUowner.User)
-Echo "$Date, $Computername, $Processor%, $TopCPUprocess, $TopCPUUser" | Out-File \\domain.com\SHARE\CPU.csv -Encoding unicode -Append
+Echo "$Date, $Computername, $Processor%, $TopCPUprocess, $TopCPUUser"
 
 }
     }
@@ -33,13 +33,13 @@ If ($RoundMemory -GT 85)
 $RAMFile = Test-Path "\\domain.com\SHARE\RAM.csv"
 If (-Not $RAMFile)
 {
-Echo "Timestamp, Server RAMLoad, Process, User" | Out-File \\domain.com\SHARE\RAM.csv -Encoding unicode
+Echo "Timestamp, Server RAMLoad, Process, User"
 }
 
 $RAMProcesses | ForEach-Object {
 $RAMOwner = (Get-WmiObject -Query "SELECT * FROM Win32_Process WHERE ProcessId=$($_.Id)").GetOwner()
 $TopRAMProcess =  $($_.ProcessName)
 $TopRAMUser = $($RAMowner.User)
-Echo "$Date, $Computername, $RoundMemory%, $TopRAMProcess, $TopRamUser" | Out-File \\domain.com\SHARE\RAM.csv -Encoding unicode -Append
+Echo "$Date, $Computername, $RoundMemory%, $TopRAMProcess, $TopRamUser"
 }
     }
